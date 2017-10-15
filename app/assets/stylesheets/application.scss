@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+
+
+.username {
+   position: relative;
+   display: block;
+   padding: 10px 15px;
+ }
