@@ -64,3 +64,6 @@ gem 'bootstrap-sass'
 
 # Used for encrypting passwords
 gem 'bcrypt'
+
+#Use 'faker' to generate database
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
