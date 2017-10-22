@@ -1,0 +1,5 @@
+<%= form_tag charges_path do %>
+   <h4>Become a premium Blocipedia member for only $9.99!</h4>
+   <p>As a premium member you'll be able to create unlimited Wikis!</p>
+   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+ <% end %>

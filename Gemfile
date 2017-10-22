@@ -62,6 +62,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Use css framework
 gem 'bootstrap-sass'
 
+#use with Stripe APIs
+gem 'stripe'
+
+#Use with sensitive data
+gem 'figaro', '1.0'
+
 # Used for encrypting passwords
 gem 'bcrypt'
 
