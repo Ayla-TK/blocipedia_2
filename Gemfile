@@ -67,6 +67,9 @@ gem 'bootstrap-sass'
 #use with Stripe APIs
 gem 'stripe'
 
+#use for MarkDown
+gem 'redcarpet'
+
 #Use with sensitive data
 gem 'figaro', '1.0'
 
