@@ -6,6 +6,10 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
 
 
+  def going_public
+      self.wikis.each { |wiki| puts wiki.publicize }
+  end
+
   def set_default_role
    self.role ||= :standard
   end
