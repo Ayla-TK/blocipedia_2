@@ -16,11 +16,10 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
 
-    current_user.update_attribute(:standard, false)
-    current_user.update_attribute(:premium, true)
+    current_user.update_attribute(:role, 'premium')
 
     flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-    redirect_to user_path(current_user) # or wherever
+    redirect_to wikis_path
 
     # Stripe will send back CardErrors, with friendly messages
     # when something goes wrong.
