@@ -1,22 +1,29 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-
-  has_many :wikis
-  after_initialize :set_default_role, :if => :new_record?
-
-
-  def going_public
-      self.wikis.each { |wiki| puts wiki.publicize }
-  end
-
-  def set_default_role
-   self.role ||= :standard
-  end
-
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :collaborators
+  has_many :wikis, dependent: :destroy
+
+
+  after_initialize :initialize_role
+
+
+  def self.going_public(user)
+    @wikis = user.wikis.where(private: true)
+    @wikis.each do |wiki|
+      wiki.update_attribute(:private, false)
+    end
+  end
+
+  private
+
+  def initialize_role
+    self.role ||= :standard
+  end
+
+
+
 
   enum role: [:standard, :premium, :admin]
 end

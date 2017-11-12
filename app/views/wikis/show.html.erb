@@ -1,5 +1,12 @@
-
-<h1><%= @wiki.title %></h1>
+<div>
+  <h1><%= @wiki.title %></h1>
+  <small>
+       submitted <%= time_ago_in_words(@wiki.created_at) %> ago
+  </small>
+  <p> Private? <%= @wiki.private %></p>
+  <p> Owner: <%= @wiki.user.email %></p>
+  <%= render partial: 'collaborators/list' %>
+</div>
 
  <div class="row">
    <div class="col-md-8">

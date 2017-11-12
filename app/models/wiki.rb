@@ -1,8 +1,13 @@
 class Wiki < ApplicationRecord
   belongs_to :user
-  scope :visible_to, -> (user) { user ? all : where(private: false) }
+  has_many :collaborators
+  has_many :users, through: :collaborators
+  
+  after_initialize :initialize_role
 
-  def publicize
-    update_attribute(:private, false)
+  private
+
+  def initialize_role
+    self.private = false if self.private.nil?
   end
 end
