@@ -5,30 +5,18 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    if current_user.present?
-      collaborators = []
-      @wiki.collaborators.each do |collaborator|
-        collaborators << collaborator.email
-      end
-    unless (@wiki.private == false) || @wiki.user == current_user || collaborators.include?(current_user.email) || current_user.admin?
-        flash[:alert] = "You are not authorized to view this wiki."
-        redirect_to new_charge_path
-      end
-    else
-      flash[:alert] = "You are not authorized to view this wiki."
-      redirect_to new_user_registration_path
-    end
-  end
+
+ end
 
   def new
     @wiki = Wiki.new
-    authorize @wiki
+
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
-    authorize @wiki
+
 
     if @wiki.save
       @wiki.collaborators = Collaborator.update_collaborators(params[:wiki][:collaborators])

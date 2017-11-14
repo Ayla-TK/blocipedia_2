@@ -20,7 +20,7 @@ class CollaboratorsController < ApplicationController
     @collaborator = Collaborator.find(params[:id])
 
     if @collaborator.destroy
-      flash[:notice] = "Delete successfull"
+      flash[:notice] = "Delete successful"
       redirect_to @wiki
     else
       flash.now[:alert] = "There was an error"
